@@ -15,8 +15,8 @@ export default function PropCards() {
   console.log("cards", propiedades);
 
   return (
-    <div className="profContainer">
-      <div className="CardsProf">
+    <div className="propContainer">
+      <div className="CardsProp">
         {propiedades?.map((e) => (
           <PropCard
             key={e.id}

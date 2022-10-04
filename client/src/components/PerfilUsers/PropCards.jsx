@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getPropiedaes } from "../../redux/actions";
 import PropCard from "./PropCard";
+import "./estilos/PropCards.css";
 
 export default function PropCards() {
   const dispatch = useDispatch();

@@ -23,10 +23,7 @@ export default function PropCards() {
             key={e.id}
             imagen={e.imagen}
             nombre={e.nombre}
-            descripcion={e.descripcion}
             localidad={e.localidad}
-            precio={e.precio}
-            metros={e.metros}
             ambientes={e.ambientes}
             tipo={e.tipo}
             baños={e.baños}

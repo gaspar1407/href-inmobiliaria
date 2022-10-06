@@ -1,23 +1,23 @@
 import React from "react";
+import "./estilos/PropCard.css";
 
 export default function PropCard(props) {
   return (
     <div className="Card-Container">
       <div className="PropCard">
-        <img
-          alt="imagen de propiedad"
-          className="img-Pcard"
-          src={props.imagen}
-        ></img>
-        <div>
-          <h2>{props.nombre.toUpperCase()}</h2>
-          <p>{props.descripcion}</p>
-          <p>localidad: {props.localidad}</p>
-          <p>precio: {props.precio}</p>
-          <p>metros: {props.metros}</p>
-          <p>ambientes: {props.ambientes}</p>
-          <p>tipo: {props.tipo}</p>
-          <p>baños: {props.baños}</p>
+        <div className="img-container">
+          <img
+            alt="imagen de propiedad"
+            className="img-Pcard"
+            src={props.imagen}
+          ></img>
+          <p className="p-tipo">{props.tipo.toUpperCase()}</p>
+        </div>
+        <div className="info-container">
+          <h2 className="h2-name">{props.nombre.toUpperCase()}</h2>
+          <p className="p-localidad">{props.localidad.toUpperCase()}</p>
+          <i className="fa fa-bath"> {props.baños}</i>
+          <i className="fa fa-bed"> {props.ambientes}</i>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import React from "react";
 import PropCards from "./PropCards";
 import { Link, animateScroll as scroll } from "react-scroll";
 import "./estilos/Home.css";
+import Footer from "./Footer";
 
 const Home = () => {
   return (
@@ -18,7 +19,6 @@ const Home = () => {
           alignItems: "center",
           alignContent: "center",
           zIndex: "8",
-          
         }}
       >
         <div className="div-img">
@@ -105,6 +105,9 @@ const Home = () => {
       </div>
       <div id="section6">
         <h3>Contacto</h3>
+      </div>
+      <div className="footer">
+        <Footer />
       </div>
     </div>
   );

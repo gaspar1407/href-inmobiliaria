@@ -1,0 +1,32 @@
+.btn-nav {
+    background-color: #114d4d;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;;
+    padding: 0 20px;
+    letter-spacing: 1px;
+    margin-left: 10px;
+  }
+
+  .btn-nav:hover{
+    color: #A1A9B0 ;
+  }
+  
+  .img-nav {
+    position: absolute;
+    width: 77px;
+    height: 77px;
+    left: 15px;
+    top: 11px;
+  }
+  
+  .div-img {
+    position: absolute;
+    width: 103px;
+    height: 98px;
+    left: 46px;
+    top: 0px;
+    background: #6e9987;
+  }

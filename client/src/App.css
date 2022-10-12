@@ -8,3 +8,18 @@
     font-size: calc(10px + 2vmin);
     color: white;
   }
+
+  body::-webkit-scrollbar {
+    margin-top: 20px;
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background:#AEAEAE;        /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #114d4d;    /* color of the scroll thumb */
+    border-radius: 15px;       /* roundness of the scroll thumb */
+    border: 3px solid #114d4d;  /* creates padding around scroll thumb */
+  }

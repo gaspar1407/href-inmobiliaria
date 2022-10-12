@@ -40,7 +40,7 @@ export default function AddHouseOfRent() {
             <div className="inputs-icon">
              <div className="sub-div">
             <img className='icon' src='https://cdn-icons-png.flaticon.com/512/72/72674.png'></img>
-            <div style={{display: 'flex', flexDirection: 'row'}}><input type="text" name="meter" onChange={(e) => handleInputChange(e)} /> <h5>m2</h5></div>
+            <div style={{display: 'flex', flexDirection: 'rowç'}}><input type="text" name="meter" onChange={(e) => handleInputChange(e)} /> <h5>m2</h5></div>
             </div>
             <div className="sub-div">
             <img className='icon' src='https://static.thenounproject.com/png/3539103-200.png'></img>

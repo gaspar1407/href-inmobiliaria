@@ -1,0 +1,6 @@
+.btn-admin{
+    transition: all 500ms;
+}
+.btn-admin:hover{
+    transform: scale(1.05);
+}

@@ -3,6 +3,7 @@
   flex-direction: row;
   width: 100%;
   background-color: white;
+  margin-top: 100px;
 }
 .inputs-icon{
     width: 100%;
@@ -10,6 +11,10 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    padding-right: 3em;
+    padding-left: 3em;
+
+    
 }
 .sub-div{
     display: flex;
@@ -17,11 +22,73 @@
     align-items: center;
 
 }
+
+.sub-div input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-style: dotted;
+    width: 40px;
+}
+
 .icon{
     max-height: 40px;
     max-width: 40px;
 }
 .price-div{
-    width: 400px;
-    padding-left: 30px;
+    width: 40%;
+    padding-left: 5em;
+    border-right:1px solid black;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.price-div input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-style: dotted;
+    width: 60px;
+
+}
+
+.form-superficie{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 4em;
+}
+
+.input{
+    margin-top: 15px;
+}
+
+.input input {
+    background-color: #AEAEAE;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: rgba(17, 77, 77, 1);;
+    width: 300px;
+    
+}
+
+.input input::placeholder{
+    color: black; 
+}
+
+input:focus{
+    outline: none
+}
+
+textarea{
+    background-color: #AEAEAE;
+    border-top: none;
+    border-left: none;
+    border-right: none; 
+    border-bottom: 2px solid rgba(17, 77, 77, 1);
+    width: 300px;
+
 }

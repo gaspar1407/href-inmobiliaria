@@ -1,11 +1,12 @@
-.div-sup{
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  background-color: white;
-  margin-top: 100px;
+.div-sup {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: white;
+    margin-top: 100px;
 }
-.inputs-icon{
+
+.inputs-icon {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -14,16 +15,17 @@
     padding-right: 3em;
     padding-left: 3em;
 
-    
+
 }
-.sub-div{
+
+.sub-div {
     display: flex;
     flex-direction: column;
     align-items: center;
 
 }
 
-.sub-div input{
+.sub-div input {
     border-top: none;
     border-left: none;
     border-right: none;
@@ -31,21 +33,22 @@
     width: 40px;
 }
 
-.icon{
+.icon {
     max-height: 40px;
     max-width: 40px;
 }
-.price-div{
+
+.price-div {
     width: 40%;
     padding-left: 5em;
-    border-right:1px solid black;
+    border-right: 1px solid black;
     display: flex;
     flex-direction: column;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.price-div input{
+.price-div input {
     border-top: none;
     border-left: none;
     border-right: none;
@@ -54,14 +57,14 @@
 
 }
 
-.form-superficie{
+.form-superficie {
     width: 50%;
     display: flex;
     flex-direction: column;
     margin-left: 4em;
 }
 
-.input{
+.input {
     margin-top: 15px;
 }
 
@@ -70,25 +73,69 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom-color: rgba(17, 77, 77, 1);;
+    border-bottom-color: rgba(17, 77, 77, 1);
+    ;
     width: 300px;
-    
+
 }
 
-.input input::placeholder{
-    color: black; 
+.input input::placeholder {
+    color: black;
 }
 
-input:focus{
+input:focus {
     outline: none
 }
 
-textarea{
+textarea {
     background-color: #AEAEAE;
     border-top: none;
     border-left: none;
-    border-right: none; 
+    border-right: none;
     border-bottom: 2px solid rgba(17, 77, 77, 1);
     width: 300px;
 
+}
+
+.contenedor-izquierda{
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor-derecha{
+    display: flex;
+    flex-direction: column;
+}
+
+.loaderrr {
+    width: 350px;
+    height: 4.8px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.loaderrr::after {
+    content: '';
+    width: 0%;
+    height: 4.8px;
+    background-color: #FFF;
+    background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.25) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.25) 75%, transparent 75%, transparent);
+    background-size: 15px 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    animation: animFw 6s ease-in infinite;
+}
+
+@keyframes animFw {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
 }

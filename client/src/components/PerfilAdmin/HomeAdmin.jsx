@@ -14,7 +14,7 @@ function HomeAdmin() {
          <div style={{width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: "center"}}>
          <div style={{display: 'flex', flexDirection: 'column', width: '600px', justifyContent: 'flex-start'}}>
          <h3 style={{color: 'rgba(17, 77, 77, 1)', marginTop: '30px'}}>AGREGAR</h3>
-         <Link to=''>
+         <Link to='/admin/addHRent'>
          <button className='btn-admin' style={{border: 'none', width: '600px', padding: '7px 0', color: 'rgba(84, 84, 84, 1)', marginBottom: '10px', fontSize: '20px'}}>PROPIEDAD EN ALQUILER</button>
          </Link>
          <Link to=''>

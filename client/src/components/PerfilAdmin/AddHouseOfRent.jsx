@@ -26,6 +26,7 @@ export default function AddHouseOfRent() {
   });
   const [image, setImage] = useState([]);
   const [imgResult, setImgResult] = useState([]);
+  const [errors, setErrors] = useState()
 
   // const [uploadImage, setUploadImage] = useState('')
   const validator = (inputs) => {
@@ -34,47 +35,47 @@ export default function AddHouseOfRent() {
     const beNumber = /(^\d{1,10}$)/;
     if (!inputs.price) {
       validations.price = "Ingrese el valor de alquiler";
-    } else if (!isNaN(inputs.price)) {
+    } else if (isNaN(inputs.price)) {
       validations.price = "Debe ingresar solo números para el alquiler";
     } else if (!inputs.expences) {
       validations.expences = "Ingrese el valor de las expensas";
-    } else if (!isNaN(inputs.expences)) {
+    } else if (isNaN(inputs.expences)) {
       validations.expences = "Debe ingresar solo números para las expensas";
     } else if (!inputs.meter) {
       validations.meter = "Debe ingresar la cantidad de metros cuadrados";
-    } else if (!isNaN(inputs.meter)) {
+    } else if (isNaN(inputs.meter)) {
       validations.meter =
         "Debe ingresar solo números para la cantidad de metros cuadrados";
     } else if (!inputs.garage) {
       validations.garage = "Debe ingresar la cantidad de lugares de garage";
-    } else if (!isNaN(inputs.garage)) {
+    } else if (isNaN(inputs.garage)) {
       validations.garage =
         "Debe ingresar solo números para la cantidad de lugares de garage";
     } else if (!inputs.bedroom) {
       validations.bedroom = "Debe ingresar la cantidad de habitaciones";
-    } else if (!isNaN(inputs.bedroom)) {
+    } else if (isNaN(inputs.bedroom)) {
       validations.bedroom =
         "Debe ingresar solo números para la cantidad de habitaciones";
     } else if (!inputs.bathroom) {
       validations.bathroom = "Debe ingresar la cantidad de baños";
-    } else if (!isNaN(inputs.bathroom)) {
+    } else if (isNaN(inputs.bathroom)) {
       validations.bathroom =
         "Debe ingresar solo números para la cantidad de baños";
     } else if (!inputs.description) {
       validations.description = "Debe ingresar una descripción";
     }  else if (!inputs.superficie) {
       validations.superficie = "Debe ingresar la superficie total";
-    } else if (!isNaN(inputs.superficie)) {
+    } else if (isNaN(inputs.superficie)) {
       validations.superficie =
         "Debe ingresar solo números para la superfie total";
     } else if (!inputs.supCubierta) {
       validations.supCubierta = "Debe ingresar la superficie cubierta";
-    } else if (!isNaN(inputs.supCubierta)) {
+    } else if (isNaN(inputs.supCubierta)) {
       validations.supCubierta =
         "Debe ingresar solo números para la superfie cubierta";
     } else if (!inputs.supLibre) {
       validations.supLibre = "Debe ingresar la superficie libre";
-    } else if (!isNaN(inputs.supLibre)) {
+    } else if (isNaN(inputs.supLibre)) {
       validations.supLibre =
         "Debe ingresar solo números para la superfie libre";
     } else if (!inputs.provincia) {
@@ -85,21 +86,29 @@ export default function AddHouseOfRent() {
       validations.calle = "Debe ingresar una calle";
     }else if (!inputs.numero) {
       validations.ciudad = "Debe ingresar el número";
-    } else if (!isNaN(inputs.numero)) {
+    } else if (isNaN(inputs.numero)) {
       validations.numero =
         "Debe ingresar solo números para el número de calle";
+    } else if(inputs.images < 1) {
+      validations.images = 
+      "Debe cargar al menos una imágen"
     }
     return validations;
   };
 
   let handleInputChange = (e) => {
     if(e.target.name === 'price' || e.target.name === 'expences' || e.target.name === 'meter' || e.target.name === 'garage' || e.target.name === 'bedroom' || e.target.name === 'bathroom' || e.target.name === 'superficie' || e.target.name === 'supCubierta' || e.target.name === 'supLibre' || e.target.name === 'numero'){
-      setInputs({ ...inputs, [e.target.name]: parseInt(e.target.value) });
+      setInputs({ ...inputs, [e.target.name]: parseInt(e.target.value)});
+      let error = validator({ ...inputs, [e.target.name]: parseInt(e.target.value)})
+      setErrors(error)
     }
-    setInputs({ ...inputs, [e.target.name]: e.target.value });
+    let stringWithUppercase = (e.target.value).charAt(0).toUpperCase() + (e.target.value).slice(1);
+    setInputs({ ...inputs, [e.target.name]: stringWithUppercase });
+    let error = validator({ ...inputs, [e.target.name]: stringWithUppercase })
+    setErrors(error)
   };
   console.log(inputs, "inputsss");
-
+  console.log(errors, "erroressss");
   console.log("soy image", image);
 
   const upload = async (e) => {
@@ -116,6 +125,7 @@ export default function AddHouseOfRent() {
           // console.log(response)
           img.push(response.data.url);
           setImgResult(img);
+          setInputs({...inputs, images: [...img]})
           if (x === image.length - 1) {
             setLoading(false);
           }
@@ -127,6 +137,7 @@ export default function AddHouseOfRent() {
     e.preventDefault();
     let result = image.filter((elem) => elem.name !== e.target.name);
     setImage([...result]);
+    setInputs({...inputs, images: [...result]})
   };
 
   return (
@@ -163,13 +174,13 @@ export default function AddHouseOfRent() {
               className="icon"
               src="https://cdn-icons-png.flaticon.com/512/72/72674.png"
             ></img>
-            <div style={{ display: "flex", flexDirection: "row" }}>
+            <div style={{ display: "flex", flexDirection: "row", paddingTop: '15px'  }}>
               <input
                 type="text"
                 name="meter"
                 onChange={(e) => handleInputChange(e)}
               />{" "}
-              <h5>
+              <h5 style={{padding: '0 10px'}}>
                 m<sup>2</sup>
               </h5>
             </div>
@@ -179,13 +190,13 @@ export default function AddHouseOfRent() {
               className="icon"
               src="https://static.thenounproject.com/png/3539103-200.png"
             ></img>
-            <div style={{ display: "flex", flexDirection: "row" }}>
+            <div style={{ display: "flex", flexDirection: "row", paddingTop: '15px'  }}>
               <input
                 type="text"
                 name="garage"
                 onChange={(e) => handleInputChange(e)}
               />
-              <h5>garage</h5>
+              <h5 style={{padding: '0 10px'}}>garage</h5>
             </div>
           </div>
           <div className="sub-div">
@@ -193,13 +204,13 @@ export default function AddHouseOfRent() {
               className="icon"
               src="https://cdn-icons-png.flaticon.com/512/2237/2237426.png"
             ></img>
-            <div style={{ display: "flex", flexDirection: "row" }}>
+            <div style={{ display: "flex", flexDirection: "row", paddingTop: '15px'  }}>
               <input
                 type="text"
                 name="bedroom"
                 onChange={(e) => handleInputChange(e)}
               />
-              <h5>habitaciones</h5>
+              <h5 style={{padding: '0 10px'}}>habitaciones</h5>
             </div>
           </div>
           <div className="sub-div">
@@ -207,13 +218,13 @@ export default function AddHouseOfRent() {
               className="icon"
               src="https://cdn-icons-png.flaticon.com/512/2850/2850294.png"
             ></img>
-            <div style={{ display: "flex", flexDirection: "row" }}>
+            <div style={{ display: "flex", flexDirection: "row", paddingTop: '15px' }}>
               <input
                 type="text"
                 name="bathroom"
                 onChange={(e) => handleInputChange(e)}
               />
-              <h5>baños</h5>
+              <h5 style={{padding: '0 10px'}}>baños</h5>
             </div>
           </div>
         </div>
@@ -225,48 +236,54 @@ export default function AddHouseOfRent() {
             className="input"
           >
             <textarea
+            className="input-description"
               name="description"
               cols="30"
               rows="5"
               onChange={(e) => handleInputChange(e)}
-              placeholder="Descripción"
+              placeholder="Descripción de la propiedad"
             ></textarea>
           </div>
 
           {/* ............ */}
 
           {/* UBICACIÓN */}
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <h3>Ubicación</h3>
+          <div style={{ display: "flex", flexDirection: "column" }} className='ubicacion-div'>
+            <h3 className="title-ubi">Ubicación</h3>
             <input
+            className="input-ubi"
               type="text"
               name="provincia"
               onChange={(e) => handleInputChange(e)}
               placeholder="Provincia"
             />
             <input
+            className="input-ubi"
               type="text"
               name="ciudad"
               onChange={(e) => handleInputChange(e)}
               placeholder="Ciudad"
             />
             <input
+            className="input-ubi"
               type="text"
               name="calle"
               onChange={(e) => handleInputChange(e)}
               placeholder="Calle"
             />
             <input
+            className="input-ubi"
               type="text"
               name="número"
               onChange={(e) => handleInputChange(e)}
               placeholder="Número"
             />
             <input
+            className="input-ubi"
               type="text"
               name="piso"
               onChange={(e) => handleInputChange(e)}
-              placeholder="Piso"
+              placeholder="Piso (no es obligatorio)"
             />
           </div>
           {/* MEDIDAS */}
@@ -421,17 +438,18 @@ export default function AddHouseOfRent() {
           className="divInputsImage"
           style={{ display: "flex", flexDirection: "column" }}
         >
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <h5 style={{ marginBottom: "10px", fontSize: "1.2em" }}>
+          <div style={{ display: "flex", flexDirection: "column" }} className='input-img'>
+            {/* <h5 style={{ marginBottom: "10px", fontSize: "1.2em" }}>
               Imagen del complejo
-            </h5>
+            </h5> */}
             <form>
               {image.length === 10 ? (
-                <h3>Has alcanzado el máximo de imágenes</h3>
+                <h3 className='max-img'>Has alcanzado el máximo de imágenes</h3>
               ) : (
                 <input
                   type="file"
                   className="inputImage"
+                  aria-label="Archivo"
                   onChange={(e) => setImage([...image, e.target.files[0]])}
                 />
               )}
@@ -439,11 +457,13 @@ export default function AddHouseOfRent() {
                 ? image?.map((elem, index) => {
                     return (
                       <div
+                      className="img-selected"
                         key={index}
                         style={{ display: "flex", flexDirection: "row" }}
                       >
                         <h6>{elem?.name}</h6>
                         <button
+                        className="btn-img-selected"
                           name={elem?.name}
                           onClick={(e) => deleteImage(e)}
                         >
@@ -456,7 +476,7 @@ export default function AddHouseOfRent() {
               {loading ? (
                 <span className="loaderrr" style={{ marginTop: "7px" }}></span>
               ) : null}
-              <button onClick={(e) => upload(e)}>Subir imagenes</button>
+              <button className="btn-img" onClick={(e) => upload(e)}>Subir imagenes</button>
             </form>
           </div>
         </div>

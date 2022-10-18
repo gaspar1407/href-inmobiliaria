@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      imagen: {
+      images: {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
@@ -44,6 +44,52 @@ module.exports = (sequelize) => {
       baños: {
         type: DataTypes.INTEGER,
         allowNull: false,
+      },
+      habitaciones: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      garage: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      expensas: {
+        type: DataTypes.INTEGER,
+      },
+      tipo: {
+        type: DataTypes.ENUM(['alquiler', 'venta']),
+        allowNull: false,
+      },
+      superficie: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      superficieCubierta: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      superficieLibre: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      provincia: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      ciudad: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      calle: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      numero: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      piso: {
+        type: DataTypes.INTEGER
       },
     },
     {

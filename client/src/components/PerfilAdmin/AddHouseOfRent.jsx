@@ -26,7 +26,8 @@ export default function AddHouseOfRent() {
   });
   const [image, setImage] = useState([]);
   const [imgResult, setImgResult] = useState([]);
-  const [errors, setErrors] = useState()
+  const [errors, setErrors] = useState();
+  
 
   // const [uploadImage, setUploadImage] = useState('')
   const validator = (inputs) => {
@@ -63,7 +64,7 @@ export default function AddHouseOfRent() {
         "Debe ingresar solo números para la cantidad de baños";
     } else if (!inputs.description) {
       validations.description = "Debe ingresar una descripción";
-    }  else if (!inputs.superficie) {
+    } else if (!inputs.superficie) {
       validations.superficie = "Debe ingresar la superficie total";
     } else if (isNaN(inputs.superficie)) {
       validations.superficie =
@@ -84,28 +85,41 @@ export default function AddHouseOfRent() {
       validations.ciudad = "Debe ingresar una ciudad";
     } else if (!inputs.calle) {
       validations.calle = "Debe ingresar una calle";
-    }else if (!inputs.numero) {
+    } else if (!inputs.numero) {
       validations.ciudad = "Debe ingresar el número";
     } else if (isNaN(inputs.numero)) {
-      validations.numero =
-        "Debe ingresar solo números para el número de calle";
-    } else if(inputs.images < 1) {
-      validations.images = 
-      "Debe cargar al menos una imágen"
+      validations.numero = "Debe ingresar solo números para el número de calle";
+    } else if (inputs.images < 1) {
+      validations.images = "Debe cargar al menos una imágen";
     }
     return validations;
   };
 
   let handleInputChange = (e) => {
-    if(e.target.name === 'price' || e.target.name === 'expences' || e.target.name === 'meter' || e.target.name === 'garage' || e.target.name === 'bedroom' || e.target.name === 'bathroom' || e.target.name === 'superficie' || e.target.name === 'supCubierta' || e.target.name === 'supLibre' || e.target.name === 'numero'){
-      setInputs({ ...inputs, [e.target.name]: parseInt(e.target.value)});
-      let error = validator({ ...inputs, [e.target.name]: parseInt(e.target.value)})
-      setErrors(error)
+    if (
+      e.target.name === "price" ||
+      e.target.name === "expences" ||
+      e.target.name === "meter" ||
+      e.target.name === "garage" ||
+      e.target.name === "bedroom" ||
+      e.target.name === "bathroom" ||
+      e.target.name === "superficie" ||
+      e.target.name === "supCubierta" ||
+      e.target.name === "supLibre" ||
+      e.target.name === "numero"
+    ) {
+      setInputs({ ...inputs, [e.target.name]: parseInt(e.target.value) });
+      let error = validator({
+        ...inputs,
+        [e.target.name]: parseInt(e.target.value),
+      });
+      setErrors(error);
     }
-    let stringWithUppercase = (e.target.value).charAt(0).toUpperCase() + (e.target.value).slice(1);
+    let stringWithUppercase =
+      e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1);
     setInputs({ ...inputs, [e.target.name]: stringWithUppercase });
-    let error = validator({ ...inputs, [e.target.name]: stringWithUppercase })
-    setErrors(error)
+    let error = validator({ ...inputs, [e.target.name]: stringWithUppercase });
+    setErrors(error);
   };
   console.log(inputs, "inputsss");
   console.log(errors, "erroressss");
@@ -125,7 +139,7 @@ export default function AddHouseOfRent() {
           // console.log(response)
           img.push(response.data.url);
           setImgResult(img);
-          setInputs({...inputs, images: [...img]})
+          setInputs({ ...inputs, images: [...img] });
           if (x === image.length - 1) {
             setLoading(false);
           }
@@ -137,8 +151,9 @@ export default function AddHouseOfRent() {
     e.preventDefault();
     let result = image.filter((elem) => elem.name !== e.target.name);
     setImage([...result]);
-    setInputs({...inputs, images: [...result]})
+    setInputs({ ...inputs, images: [...result] });
   };
+
 
   return (
     <div>
@@ -174,13 +189,19 @@ export default function AddHouseOfRent() {
               className="icon"
               src="https://cdn-icons-png.flaticon.com/512/72/72674.png"
             ></img>
-            <div style={{ display: "flex", flexDirection: "row", paddingTop: '15px'  }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                paddingTop: "15px",
+              }}
+            >
               <input
                 type="text"
                 name="meter"
                 onChange={(e) => handleInputChange(e)}
               />{" "}
-              <h5 style={{padding: '0 10px'}}>
+              <h5 style={{ padding: "0 10px" }}>
                 m<sup>2</sup>
               </h5>
             </div>
@@ -190,13 +211,19 @@ export default function AddHouseOfRent() {
               className="icon"
               src="https://static.thenounproject.com/png/3539103-200.png"
             ></img>
-            <div style={{ display: "flex", flexDirection: "row", paddingTop: '15px'  }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                paddingTop: "15px",
+              }}
+            >
               <input
                 type="text"
                 name="garage"
                 onChange={(e) => handleInputChange(e)}
               />
-              <h5 style={{padding: '0 10px'}}>garage</h5>
+              <h5 style={{ padding: "0 10px" }}>garage</h5>
             </div>
           </div>
           <div className="sub-div">
@@ -204,13 +231,19 @@ export default function AddHouseOfRent() {
               className="icon"
               src="https://cdn-icons-png.flaticon.com/512/2237/2237426.png"
             ></img>
-            <div style={{ display: "flex", flexDirection: "row", paddingTop: '15px'  }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                paddingTop: "15px",
+              }}
+            >
               <input
                 type="text"
                 name="bedroom"
                 onChange={(e) => handleInputChange(e)}
               />
-              <h5 style={{padding: '0 10px'}}>habitaciones</h5>
+              <h5 style={{ padding: "0 10px" }}>habitaciones</h5>
             </div>
           </div>
           <div className="sub-div">
@@ -218,13 +251,19 @@ export default function AddHouseOfRent() {
               className="icon"
               src="https://cdn-icons-png.flaticon.com/512/2850/2850294.png"
             ></img>
-            <div style={{ display: "flex", flexDirection: "row", paddingTop: '15px' }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                paddingTop: "15px",
+              }}
+            >
               <input
                 type="text"
                 name="bathroom"
                 onChange={(e) => handleInputChange(e)}
               />
-              <h5 style={{padding: '0 10px'}}>baños</h5>
+              <h5 style={{ padding: "0 10px" }}>baños</h5>
             </div>
           </div>
         </div>
@@ -236,7 +275,7 @@ export default function AddHouseOfRent() {
             className="input"
           >
             <textarea
-            className="input-description"
+              className="input-description"
               name="description"
               cols="30"
               rows="5"
@@ -248,38 +287,41 @@ export default function AddHouseOfRent() {
           {/* ............ */}
 
           {/* UBICACIÓN */}
-          <div style={{ display: "flex", flexDirection: "column" }} className='ubicacion-div'>
+          <div
+            style={{ display: "flex", flexDirection: "column" }}
+            className="ubicacion-div"
+          >
             <h3 className="title-ubi">Ubicación</h3>
             <input
-            className="input-ubi"
+              className="input-ubi"
               type="text"
               name="provincia"
               onChange={(e) => handleInputChange(e)}
               placeholder="Provincia"
             />
             <input
-            className="input-ubi"
+              className="input-ubi"
               type="text"
               name="ciudad"
               onChange={(e) => handleInputChange(e)}
               placeholder="Ciudad"
             />
             <input
-            className="input-ubi"
+              className="input-ubi"
               type="text"
               name="calle"
               onChange={(e) => handleInputChange(e)}
               placeholder="Calle"
             />
             <input
-            className="input-ubi"
+              className="input-ubi"
               type="text"
               name="número"
               onChange={(e) => handleInputChange(e)}
               placeholder="Número"
             />
             <input
-            className="input-ubi"
+              className="input-ubi"
               type="text"
               name="piso"
               onChange={(e) => handleInputChange(e)}
@@ -331,106 +373,298 @@ export default function AddHouseOfRent() {
               </p>
             </div>
           </div>
-          <div style={{display:'flex', flexDirection:'row', marginTop:'30px'}}>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginTop: "30px",
+              justifyContent: "space-around",
+              width: "100%",
+            }}
+          >
             <div className="contenedor-izquierda">
-              <input
-                type="text"
-                name="operacion"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Operación"
-              />
-              <input
-                type="text"
-                name="alquiler"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Alquiler"
-              />
-              <input
-                type="text"
-                name="expensas"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Expensas"
-              />
-              <input
-                type="text"
-                name="ambientes"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Ambientes"
-              />
-              <input
-                type="text"
-                name="estado"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Estado"
-              />
-              <input
-                type="text"
-                name="antiguedad"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Antigüe"
-              />
-              <input
-                type="text"
-                name="orientacion"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Orientación"
-              />
-              <input
-                type="text"
-                name="pileta"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Pileta"
-              />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  width: "300px",
+                  justifyContent: "space-between",
+                }}
+              >
+                <h6>Operación</h6>
+                <div>
+                  <input
+                    type="radio"
+                    name="operacion"
+                    id="alquiler"
+                    onChange={(e) => handleInputChange(e)}
+                    value="alquiler"
+                  />
+                  <label for="alquiler" style={{ marginRight: "15px" }}>
+                    Alquiler
+                  </label>
+                  <input
+                    type="radio"
+                    name="operacion"
+                    id="venta"
+                    onChange={(e) => handleInputChange(e)}
+                    value="venta"
+                  />
+                  <label for="venta">Venta</label>
+                </div>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  width: "300px",
+                  justifyContent: "space-between",
+                }}
+              >
+                <h6>Ambientes</h6>
+                <input
+                  type="text"
+                  name="ambientes"
+                  onChange={(e) => handleInputChange(e)}
+                  style={{
+                    width: "130px",
+                    borderTop: "none",
+                    borderRight: "none",
+                    borderLeft: "none",
+                    borderBottom: "dotted",
+                    backgroundColor: "rgb(202, 202, 202)",
+                    textAlign: "right",
+                  }}
+                />
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  width: "300px",
+                  justifyContent: "space-between",
+                }}
+              >
+                <h6>Estado</h6>
+                <input
+                  type="text"
+                  name="estado"
+                  onChange={(e) => handleInputChange(e)}
+                  style={{
+                    width: "130px",
+                    borderTop: "none",
+                    borderRight: "none",
+                    borderLeft: "none",
+                    borderBottom: "dotted",
+                    backgroundColor: "rgb(202, 202, 202)",
+                    textAlign: "right",
+                  }}
+                />
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  width: "300px",
+                  justifyContent: "space-between",
+                }}
+              >
+                <h6>Antigüedad</h6>
+                <input
+                  type="text"
+                  name="antiguedad"
+                  onChange={(e) => handleInputChange(e)}
+                  style={{
+                    width: "130px",
+                    borderTop: "none",
+                    borderRight: "none",
+                    borderLeft: "none",
+                    borderBottom: "dotted",
+                    backgroundColor: "rgb(202, 202, 202)",
+                    textAlign: "right",
+                  }}
+                />
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  width: "300px",
+                  justifyContent: "space-between",
+                }}
+              >
+                <h6>Orientación</h6>
+                <input
+                  type="text"
+                  name="orientacion"
+                  onChange={(e) => handleInputChange(e)}
+                  style={{
+                    width: "130px",
+                    borderTop: "none",
+                    borderRight: "none",
+                    borderLeft: "none",
+                    borderBottom: "dotted",
+                    backgroundColor: "rgb(202, 202, 202)",
+                    textAlign: "right",
+                  }}
+                />
+              </div>
             </div>
-            <div className="contenedor-derecha">
-              <input
-                type="text"
-                name="amueblada"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Amueblada"
-              />
-              <input
-                type="text"
-                name="baños"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Baños"
-              />
-              <input
-                type="text"
-                name="habitaciones"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Habitaciones"
-              />
-              <input
-                type="text"
-                name="garage"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Garage"
-              />
-              <input
-                type="text"
-                name="calefaccion"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Calefacción"
-              />
-              <input
-                type="text"
-                name="mascotas"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Mascotas"
-              />
-              <input
-                type="text"
-                name="agua"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Agua caliente"
-              />
-              <input
-                type="text"
-                name="aire"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Aire acondicionado"
-              />
+            <div className="contenedor-centro">
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  width: "300px",
+                  justifyContent: "space-between",
+                }}
+              >
+                <h6>Pileta</h6>
+                <div>
+                  <input
+                    type="radio"
+                    name="pileta"
+                    id="piletaSi"
+                    onChange={(e) => handleInputChange(e)}
+                    value="si"
+                  />
+                  <label for="piletaSi" style={{ marginRight: "15px" }}>
+                    Si
+                  </label>
+                  <input
+                    type="radio"
+                    name="pileta"
+                    id="piletaNo"
+                    onChange={(e) => handleInputChange(e)}
+                    value="no"
+                  />
+                  <label for="piletaNo">No</label>
+                </div>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  width: "300px",
+                  justifyContent: "space-between",
+                }}
+              >
+                <h6>Quincho</h6>
+                <div>
+                  <input
+                    type="radio"
+                    name="quincho"
+                    id="quinchoSi"
+                    onChange={(e) => handleInputChange(e)}
+                    value="si"
+                  />
+                  <label for="quincho" style={{ marginRight: "15px" }}>
+                    Si
+                  </label>
+                  <input
+                    type="radio"
+                    name="quincho"
+                    id="quinchoNo"
+                    onChange={(e) => handleInputChange(e)}
+                    value="no"
+                  />
+                  <label for="quincho">No</label>
+                </div>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  width: "300px",
+                  justifyContent: "space-between",
+                }}
+              >
+                <h6>Parrilla</h6>
+                <div>
+                  <input
+                    type="radio"
+                    name="parrilla"
+                    id="parrillaSi"
+                    onChange={(e) => handleInputChange(e)}
+                    value="si"
+                  />
+                  <label for="parrilla" style={{ marginRight: "15px" }}>
+                    Si
+                  </label>
+                  <input
+                    type="radio"
+                    name="parrilla"
+                    id="parrillaNo"
+                    onChange={(e) => handleInputChange(e)}
+                    value="no"
+                  />
+                  <label for="parrilla">No</label>
+                </div>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  width: "300px",
+                  justifyContent: "space-between",
+                }}
+              >
+                <h6>Amueblada</h6>
+                <div>
+                  <input
+                    type="radio"
+                    name="amueblada"
+                    id="amuebladaSi"
+                    onChange={(e) => handleInputChange(e)}
+                    value="si"
+                  />
+                  <label for="amueblada" style={{ marginRight: "15px" }}>
+                    Si
+                  </label>
+                  <input
+                    type="radio"
+                    name="amueblada"
+                    id="amuebladaNo"
+                    onChange={(e) => handleInputChange(e)}
+                    value="no"
+                  />
+                  <label for="amueblada">No</label>
+                </div>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  width: "300px",
+                  justifyContent: "space-between",
+                }}
+              >
+                <h6>Acepta mascotas</h6>
+                <div>
+                  <input
+                    type="radio"
+                    name="mascotas"
+                    id="mascotasSi"
+                    onChange={(e) => handleInputChange(e)}
+                    value="si"
+                  />
+                  <label for="mascotas" style={{ marginRight: "15px" }}>
+                    Si
+                  </label>
+                  <input
+                    type="radio"
+                    name="mascotas"
+                    id="mascotasNo"
+                    onChange={(e) => handleInputChange(e)}
+                    value="no"
+                  />
+                  <label for="mascotas">No</label>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -438,32 +672,41 @@ export default function AddHouseOfRent() {
           className="divInputsImage"
           style={{ display: "flex", flexDirection: "column" }}
         >
-          <div style={{ display: "flex", flexDirection: "column" }} className='input-img'>
-            {/* <h5 style={{ marginBottom: "10px", fontSize: "1.2em" }}>
-              Imagen del complejo
-            </h5> */}
+          <div
+            style={{ display: "flex", flexDirection: "column" }}
+            className="input-img"
+          >
             <form>
               {image.length === 10 ? (
-                <h3 className='max-img'>Has alcanzado el máximo de imágenes</h3>
+                <h3 className="max-img">Has alcanzado el máximo de imágenes</h3>
               ) : (
-                <input
-                  type="file"
-                  className="inputImage"
-                  aria-label="Archivo"
-                  onChange={(e) => setImage([...image, e.target.files[0]])}
-                />
+                <div
+                  style={{
+                    width: "355px",
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: "30px",
+                  }}
+                >
+                  <input
+                    type="file"
+                    className="inputImage"
+                    aria-label="Archivo"
+                    onChange={(e) => setImage([...image, e.target.files[0]])}
+                  />
+                </div>
               )}
               {image.length > 0
                 ? image?.map((elem, index) => {
                     return (
                       <div
-                      className="img-selected"
+                        className="img-selected"
                         key={index}
                         style={{ display: "flex", flexDirection: "row" }}
                       >
                         <h6>{elem?.name}</h6>
                         <button
-                        className="btn-img-selected"
+                          className="btn-img-selected"
                           name={elem?.name}
                           onClick={(e) => deleteImage(e)}
                         >
@@ -476,11 +719,25 @@ export default function AddHouseOfRent() {
               {loading ? (
                 <span className="loaderrr" style={{ marginTop: "7px" }}></span>
               ) : null}
-              <button className="btn-img" onClick={(e) => upload(e)}>Subir imagenes</button>
+              {image.length == 0 ? (
+                <button
+                  disabled
+                  className="btn-img"
+                  style={{ backgroundColor: "rgba(85, 85, 85, 1)" }}
+                  onClick={(e) => upload(e)}
+                >
+                  Subir imagenes
+                </button>
+              ) : (
+                <button className="btn-img" onClick={(e) => upload(e)}>
+                  Subir imagenes
+                </button>
+              )}
             </form>
           </div>
         </div>
       </div>
+      
     </div>
   );
 }

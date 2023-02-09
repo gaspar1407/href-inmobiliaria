@@ -1,0 +1,160 @@
+.main-Footer{
+  width: 100%;
+  height: 27vh;
+
+  background-color: #CFCFCF;
+  background-position: cover;
+  border-top: 1px solid #6e9987 ;
+
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+
+
+  font-size: small;
+  color: antiquewhite;
+  bottom: 0%;
+  margin-bottom: 0%;
+}
+
+.cont-img{
+  position: absolute;
+  width: 166px;
+  height: 148px;
+  background: #6e9987;
+  right: 50px;
+  left: 50px;
+  margin-top: 15px;
+}
+
+.img-footer {
+  position: absolute;
+  width: 120px;
+  margin-left: 20px;
+  height: 115px;
+  top: 15px;
+
+}
+
+.pie {
+  display: flex;
+  justify-content: center;
+  color: white;
+  width: 100%;
+  height: 5vh;
+  background: #114d4d;
+  text-align: center;
+ 
+}
+
+.h2-pie{
+  font-family: 'Inter', sans-serif;
+  font-size: x-large;
+  text-align: center;
+  margin: 5px auto;
+  
+}
+
+.a-href{
+  text-decoration: none;
+  color: #9bc7b4;
+  font-family: 'Jaldi', sans-serif;
+  font-weight: bold;
+  letter-spacing: 2px;
+  
+}
+
+.a-href:hover{
+  color: #114d4d;
+  transition: all 1s;
+}
+
+.container-footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.h-3-Foot{
+  margin-top: 45px;
+}
+
+.h3-f {
+  display: flex;
+  justify-content:flex-start;
+  margin-left: 15%;
+ font-size: x-large;
+ font-weight: bolder;
+  color: #545454;
+}
+
+.redes-container{
+  position: relative;
+  top: 5%;
+  margin-left: 75%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  max-width: 1200px;
+  text-align: center;
+  
+}
+
+.redes-container .foot-btn{
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background-color: #6e9987;
+  box-shadow: 0 5px 15px -5px #0d0d0d;
+  margin: 10px;
+  border-radius: 30%;
+  overflow: hidden;
+  position:relative;
+  color: #114d4d;
+ 
+}
+
+.redes-container .foot-btn i{
+  position:relative;
+ z-index: 4;
+  line-height: 60px;
+  font-size: 26px;
+  transition: 0.3s ease-in-out;
+ 
+ 
+  
+}
+
+.redes-container .foot-btn::before{
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: linear-gradient(#6e9987, #9bc7b4);
+  transform: rotate(45deg);
+  left: -110%;
+  top: 90%;
+}
+
+.redes-container .foot-btn:hover{
+  color: #CFCFCF ;
+  transform: scale(1.3);
+}
+
+.redes-container .foot-btn:hover::before{
+  animation: onHover 0.7s 1;
+  left: -10%;
+  top: -10%;
+}
+
+@keyframes onHover{
+  0%{
+      left: -110%;
+      top: 90%;
+  }
+  50%{
+      left: 10%;
+      top: -30%;
+  }
+  100%{
+      left: -10%;
+      top: -10%;
+  }
+}
